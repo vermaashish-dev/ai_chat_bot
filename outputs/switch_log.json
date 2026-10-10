@@ -1,0 +1,236 @@
+[
+  {
+    "created_at": "2026-10-10 15:06:44",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Slower pace, brief apology, and offered a callback time.",
+    "reason": "User expressed frustration and irritation about repeated calls.",
+    "seller_quote": "Yaar roz roz IndiaMART se call aata hai, pareshan kar diya hai aap logon ne."
+  },
+  {
+    "created_at": "2026-10-10 15:06:56",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "language_switch",
+    "change_made": "Switched to English and confirmed callback time.",
+    "reason": "User explicitly requested to speak in English.",
+    "seller_quote": "Please speak in English."
+  },
+  {
+    "created_at": "2026-10-10 15:09:51",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "interest",
+    "change_made": "Warmed up the tone and provided a one-line explanation before returning to the meeting request.",
+    "reason": "User asked about the type of meeting, indicating interest.",
+    "seller_quote": "Which, what type of meeting is?"
+  },
+  {
+    "created_at": "2026-10-10 15:46:14",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Slowing down, apologizing, and offering a callback time instead of pitching.",
+    "reason": "User expressed frustration and irritation about repeated calls.",
+    "seller_quote": "यार बार-बार फोन करके परेशान मत किया करो।"
+  },
+  {
+    "created_at": "2026-10-10 15:51:51",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "slowed down, apologised briefly and stopped pitching for the meeting",
+    "reason": "user expressed irritation about repeated calls",
+    "seller_quote": "Yaar baar baar phone karke pareshan mat kiya karo."
+  },
+  {
+    "created_at": "2026-10-10 15:53:40",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Slowed down, apologized, and stopped pitching for a meeting.",
+    "reason": "User expressed frustration by saying the call is a waste of time.",
+    "seller_quote": "Why are you wasting my time?"
+  },
+  {
+    "created_at": "2026-10-10 15:54:11",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Stopped proposing meetings entirely and offered only a callback.",
+    "reason": "Second sign of frustration; user complained about repeated requests for a meeting.",
+    "seller_quote": "Why you are again again again asking for the meeting?"
+  },
+  {
+    "created_at": "2026-10-10 15:54:15",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Stopped proposing a meeting and offered a callback instead.",
+    "reason": "Second sign of frustration; user is irritated by repeated meeting requests.",
+    "seller_quote": "Why you are again again again asking for the meeting?"
+  },
+  {
+    "created_at": "2026-10-10 15:58:13",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "slowed down, apologized, and stopped pitching for a meeting, moving directly to a callback option.",
+    "reason": "User expressed frustration by saying 'Why are you wasting my time?'",
+    "seller_quote": "Why are you wasting my time?"
+  },
+  {
+    "created_at": "2026-10-10 16:00:26",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Slowed down, apologized, and stopped pitching the meeting; moved to offering a callback.",
+    "reason": "User expressed frustration and suspected the agent is a bot/forcing.",
+    "seller_quote": "You are like a bot, I think you are forcing again and again."
+  },
+  {
+    "created_at": "2026-10-10 16:00:27",
+    "glid": 6299,
+    "call_ref": null,
+    "signal": "frustration",
+    "change_made": "Slowing down, apologizing, and stopping the meeting pitch. Moving to callback option.",
+    "reason": "User expressed frustration and suspected the agent is a bot.",
+    "seller_quote": "You are like a bot, I think you are forcing again and again for the meeting."
+  },
+  {
+    "created_at": "2026-10-10 16:30:26",
+    "glid": 6299,
+    "call_ref": "f7b5a005109c4818",
+    "signal": "frustration",
+    "change_made": "Slowing down, apologizing briefly, and stopping the meeting pitch. Moving directly to a one-line answer or callback option.",
+    "reason": "User expressed frustration about repeated calls and time wasting.",
+    "seller_quote": "Yaar baar baar call karke time waste karte ho."
+  },
+  {
+    "created_at": "2026-10-10 16:41:45",
+    "glid": 95487,
+    "call_ref": "52a8285191754d22",
+    "signal": "rush",
+    "change_made": "shortened to one question and offered two meeting times",
+    "reason": "user mentioned being busy and asked to speak quickly",
+    "seller_quote": "busy hoon jaldi boliye"
+  },
+  {
+    "created_at": "2026-10-10 16:41:49",
+    "glid": 6299,
+    "call_ref": "c032c70eb9254226",
+    "signal": "frustration",
+    "change_made": "Slowed down, apologised briefly, and stopped pitching. Offered a callback instead of a meeting.",
+    "reason": "User expressed frustration about frequent calls and felt their time was being wasted.",
+    "seller_quote": "arrey IndiaMART people call me every day only yaar you are just wasting my time"
+  },
+  {
+    "created_at": "2026-10-10 16:43:46",
+    "glid": 6299,
+    "call_ref": "8b693d414f874b56",
+    "signal": "language_switch",
+    "change_made": "switched to English as the user responded in English",
+    "reason": "user spoke in English",
+    "seller_quote": "haan speaking this is the owner of MS International tell me what is this regarding"
+  },
+  {
+    "created_at": "2026-10-10 16:43:47",
+    "glid": 6299,
+    "call_ref": "3c62576a4c83452a",
+    "signal": "language_switch",
+    "change_made": "switched to English language",
+    "reason": "user responded in English",
+    "seller_quote": "yes i am the owner of MS International what is it"
+  },
+  {
+    "created_at": "2026-10-10 16:43:47",
+    "glid": 95487,
+    "call_ref": "ae742da7e2fb4cb8",
+    "signal": "rush",
+    "change_made": "Shortened response to one direct question and offered two meeting times.",
+    "reason": "User mentioned being busy and asked to speak quickly.",
+    "seller_quote": "busy hoon jaldi boliye"
+  },
+  {
+    "created_at": "2026-10-10 16:43:51",
+    "glid": 6299,
+    "call_ref": "3c62576a4c83452a",
+    "signal": "frustration",
+    "change_made": "slowed down, apologised, and stopped pitching for the rest of the call",
+    "reason": "user expressed frustration about repeated calls and time waste",
+    "seller_quote": "you people from IndiaMART call me every single day and just waste my time na"
+  },
+  {
+    "created_at": "2026-10-10 16:43:57",
+    "glid": 6299,
+    "call_ref": "6f468341babf4847",
+    "signal": "rush",
+    "change_made": "Shortened to one question and offered two meeting times or a callback.",
+    "reason": "User mentioned they are very busy.",
+    "seller_quote": "actually right now i am very busy i cannot talk now"
+  },
+  {
+    "created_at": "2026-10-10 16:45:41",
+    "glid": 6299,
+    "call_ref": "a76a18974c484c34",
+    "signal": "language_switch",
+    "change_made": "switched to English",
+    "reason": "user responded in English",
+    "seller_quote": "haan yes this is the owner of MS International tell me"
+  },
+  {
+    "created_at": "2026-10-10 16:45:42",
+    "glid": 95487,
+    "call_ref": "2df5e889cf6d4659",
+    "signal": "rush",
+    "change_made": "Shortened response to one question and offered two meeting times directly.",
+    "reason": "User mentioned being busy and asked to speak quickly.",
+    "seller_quote": "busy hoon jaldi boliye"
+  },
+  {
+    "created_at": "2026-10-10 16:45:45",
+    "glid": 6299,
+    "call_ref": "a76a18974c484c34",
+    "signal": "frustration",
+    "change_made": "slowed down, apologized, and stopped pitching",
+    "reason": "user expressed irritation and mentioned time-waste",
+    "seller_quote": "arrey you people from IndiaMART call me every day only and waste my time yaar"
+  },
+  {
+    "created_at": "2026-10-10 16:48:37",
+    "glid": 6299,
+    "call_ref": "5cd1c714564c4fbb",
+    "signal": "frustration",
+    "change_made": "Slowed down, apologized, and shifted to offering a callback instead of a meeting.",
+    "reason": "User expressed frustration about repeated calls and time waste.",
+    "seller_quote": "Arre roz roz IndiaMART se call aata hai, time waste karte ho."
+  },
+  {
+    "created_at": "2026-10-10 16:52:30",
+    "glid": 6299,
+    "call_ref": "6f1381b93fe64100",
+    "signal": "frustration",
+    "change_made": "slowed down, apologized, and shifted to offering a callback instead of a meeting",
+    "reason": "user expressed frustration about repeated calls and time waste",
+    "seller_quote": "Yaar roz roz IndiaMART se call aata hai, time waste karte ho."
+  },
+  {
+    "created_at": "2026-10-10 17:21:44",
+    "glid": 6299,
+    "call_ref": "1b548bab5f404c71",
+    "signal": "confusion",
+    "change_made": "Slowed down and restated the purpose of the call in a simple sentence.",
+    "reason": "User expressed confusion about the caller's identity and purpose.",
+    "seller_quote": "Kya matlab? Samajh nahi aaya, aap kaun bol rahe ho aur kis baare mein?"
+  },
+  {
+    "created_at": "2026-10-10 17:21:55",
+    "glid": 6299,
+    "call_ref": "1b548bab5f404c71",
+    "signal": "rush",
+    "change_made": "Skipped meeting pitch and moved directly to confirming the callback time.",
+    "reason": "User indicated they are in a rush and requested a specific callback time.",
+    "seller_quote": "abhi time nahi hai, kal shaam 5 baje call karna."
+  }
+]

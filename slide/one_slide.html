@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VANI Seller Personas</title>
+<style>
+  @page { size: 1600px 900px; margin: 0; }
+  :root {
+    --ink:#17202b; --muted:#5b6675; --line:#d6dce4; --brand:#0b5cad; --brand2:#264a72;
+    --data:#f3f6fa; --dataline:#b9c6d6; --api:#eef6ff; --apiline:#7fb0e0; --sv:#fff5e8; --svline:#e9a649;
+    --ok:#e9f7ef; --okline:#2e8b57; --warn:#fdecea; --warnline:#b3261e;
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:#fff; color:var(--ink); font-family:"Segoe UI", Arial, sans-serif; }
+  .slide { width:1600px; height:900px; padding:24px 30px 16px; display:flex; flex-direction:column; gap:12px; overflow:hidden; }
+
+  header { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:3px solid var(--brand); padding-bottom:9px; }
+  h1 { margin:0; font-size:31px; letter-spacing:-.4px; }
+  h1 span { color:var(--brand); }
+  .sub { font-size:14.5px; color:var(--muted); margin-top:4px; }
+  .stats { display:flex; gap:8px; }
+  .stat { border:1px solid var(--line); border-radius:9px; padding:5px 10px; text-align:center; min-width:96px; }
+  .stat b { display:block; font-size:18px; color:var(--brand); }
+  .stat span { font-size:11px; color:var(--muted); }
+
+  .problem { display:grid; grid-template-columns: 1fr 1fr; gap:12px; font-size:13.2px; line-height:1.4; }
+  .problem div { border-radius:9px; padding:7px 12px; }
+  .problem .p { background:var(--warn); border:1px solid #f1b8b3; }
+  .problem .s { background:var(--ok); border:1px solid #9fd3b4; }
+  .problem b { font-size:13.5px; }
+
+  main { flex:1; display:grid; grid-template-columns: 1.62fr 1fr; gap:16px; min-height:0; }
+  main > section:first-child { display:flex; flex-direction:column; min-height:0; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.9px; color:var(--brand); margin:0 0 7px; }
+
+  /* Architecture */
+  .arch { flex:1; display:grid; grid-template-columns: 1fr 26px 1.08fr 26px 1.12fr; align-items:stretch; }
+  .lane { border-radius:11px; padding:10px 11px 11px; display:flex; flex-direction:column; justify-content:space-between; gap:6px; }
+  .lane h3 { margin:0 0 2px; font-size:14.5px; display:flex; justify-content:space-between; align-items:baseline; }
+  .lane h3 small { font-weight:400; font-size:10.8px; color:var(--muted); }
+  .l-data { background:var(--data); border:1.5px solid var(--dataline); }
+  .l-api { background:var(--api); border:1.5px solid var(--apiline); }
+  .l-sv { background:var(--sv); border:1.5px solid var(--svline); }
+  .box { background:#fff; border:1px solid var(--line); border-radius:7px; padding:6px 9px; font-size:12.6px; line-height:1.4; }
+  .box b { font-size:13.2px; }
+  .box code, .mono { font-family:Consolas, "Courier New", monospace; font-size:11px; background:#f2f4f7; border-radius:3px; padding:0 3px; }
+  .down { text-align:center; color:var(--muted); font-size:12px; line-height:.7; }
+  .link { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px; color:var(--brand2); }
+  .link .arr { font-size:22px; line-height:1; }
+  .link .lbl { writing-mode:vertical-rl; transform:rotate(180deg); font-size:10.5px; color:var(--muted); letter-spacing:.3px; }
+  .tag { display:inline-block; font-size:10.3px; border-radius:8px; padding:0 6px; margin:1px 2px 0 0; border:1px solid var(--line); background:#fff; white-space:nowrap; }
+  .t-pre { border-color:#7fb0e0; color:#1f5d99; }
+  .t-run { border-color:#e9a649; color:#9a5a00; }
+  .t-end { border-color:#9fd3b4; color:#1e6b42; }
+  .phase { font-size:10.5px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:#9a5a00; margin-top:2px; }
+  .sig { display:inline-block; font-size:10.3px; border-radius:8px; padding:0 6px; margin:1px 1px 0 0; background:#fff3df; border:1px solid #f0c27b; }
+  .llm { border-style:dashed; color:var(--muted); }
+
+  /* Right column */
+  .right { display:flex; flex-direction:column; gap:10px; min-height:0; }
+  .impact ul { margin:0; padding-left:17px; font-size:12.2px; line-height:1.45; }
+  .impact li b { color:var(--okline); }
+  .card { border:1px solid var(--line); border-radius:10px; padding:9px 12px; }
+  .who { font-size:13px; margin-bottom:6px; }
+  .who b { font-size:14px; }
+  .seg { display:inline-block; background:#fff4e5; border:1px solid #f0c27b; border-radius:12px; padding:0 8px; font-size:11.5px; font-weight:600; margin-left:4px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th, td { text-align:left; padding:3.5px 5px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#e8f1fb; font-weight:600; font-size:11px; color:var(--brand2); }
+  td.k { font-weight:600; white-space:nowrap; }
+  .ev { color:var(--muted); font-size:10.8px; }
+  .conf { font-size:9.8px; font-weight:700; border-radius:7px; padding:0 5px; white-space:nowrap; }
+  .hi { background:var(--ok); color:var(--okline); } .lo { background:var(--warn); color:var(--warnline); }
+  .call { font-size:12.1px; line-height:1.45; }
+  .call div { padding:2px 0; border-bottom:1px dashed var(--line); }
+  .call div:last-child { border-bottom:0; }
+  .v { color:var(--brand); font-weight:600; } .u { color:#7a4b00; font-weight:600; }
+  .sw { background:var(--ok); border-radius:5px; padding:0 5px; font-size:10.6px; color:var(--okline); font-weight:700; }
+  .results { display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; }
+  .res { border:1px solid var(--line); border-radius:8px; padding:5px 6px; text-align:center; font-size:10.6px; color:var(--muted); line-height:1.25; }
+  .res b { display:block; font-size:17px; color:var(--okline); }
+
+  footer { display:flex; gap:14px; font-size:11.6px; color:var(--muted); border-top:1px solid var(--line); padding-top:6px; }
+  footer b { color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header>
+    <div>
+      <h1>VANI <span>per-seller personas</span>: built before the call, adapted live</h1>
+      <div class="sub">PS04 Persona Design · IndiaMART Voice AI Hackathon · Sarvam agent <b>sulabh-im-80199a3e-82ea</b></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>149,363</b><span>sellers</span></div>
+      <div class="stat"><b>336,606</b><span>past calls</span></div>
+      <div class="stat"><b>139,545</b><span>transcript turns</span></div>
+      <div class="stat"><b>26</b><span>live switches logged</span></div>
+    </div>
+  </header>
+
+  <div class="problem">
+    <div class="p"><b>Problem.</b> VANI talks to every seller in one voice and one style for the whole call. A rushed, irritated or confused seller still gets the same pitch, and meetings are lost.</div>
+    <div class="s"><b>Solution.</b> A persona is generated <b>for each seller</b> from their own data and past calls: voice, language, tone and plan, each with a reason and evidence. VANI <b>adapts it live</b> on five signals and logs every switch.</div>
+  </div>
+
+  <main>
+    <!-- ARCHITECTURE -->
+    <section>
+      <h2>Architecture and data flow</h2>
+      <div class="arch">
+
+        <div class="lane l-data">
+          <h3>1 · Data &amp; evidence <small>offline, Python</small></h3>
+          <div class="box"><b>PS07 seller data</b> (CSV)<br>Profiles 149,363 · bot calls 269,455 · executive calls 67,151 · turns 139,545</div>
+          <div class="down">▼</div>
+          <div class="box"><b>Ingestion</b>: incremental, hash de-duplication, malformed and cp1252 rows handled. <b>Business names recovered</b> from call summaries (64,034 sellers); GLID is the key.</div>
+          <div class="down">▼</div>
+          <div class="box"><b>SQLite + SQLAlchemy</b> (WAL, indexed): suppliers, aliases, conversations, turns, call sessions, outcomes, switch log</div>
+          <div class="down">▼</div>
+          <div class="box"><b>Evidence miner</b>: meeting rate by pace, region, turnover, objection, callback history and VANI's turn after each signal. Every finding has <i>n</i> and a strength label.</div>
+        </div>
+
+        <div class="link"><span class="arr">➜</span><span class="lbl">seller record + evidence</span></div>
+
+        <div class="lane l-api">
+          <h3>2 · Persona API <small>FastAPI, Pydantic</small></h3>
+          <div class="box"><b>Persona engine</b> (rules, deterministic)<br>Voice · language · tone · plan (opening, personalisation, objection playbook, escalation, guardrails). Each has a <b>reason, data fields, evidence and confidence</b>; missing fields lower the confidence.</div>
+          <div class="box"><b>Facts layer</b>: package suggestion by turnover (IndiaMART listed prices only); <b>numbers rendered in words</b> by code; greeting built per seller.</div>
+          <div class="box llm"><b>Optional LLM</b>: gpt-4.1-mini or claude-haiku-5-5, structured output, injection guard, falls back to rules. <b>Off in this demo.</b></div>
+          <div class="box"><b>Endpoints</b><br>
+            <span class="mono">/supplier/persona</span> <span class="mono">/campaign/dial-check</span><br>
+            <span class="mono">/sarvam/pre-call</span> <span class="mono">/sarvam/switch-log</span><br>
+            <span class="mono">/sarvam/post-call</span> <span class="mono">/calls/{call_ref}</span></div>
+          <div class="box"><b>Safety</b>: bearer token, tunnel/proxy check, do-not-call stop variables, prompt-leak and fake-offer rejection</div>
+        </div>
+
+        <div class="link"><span class="arr">⇄</span><span class="lbl">HTTPS tunnel · bearer token · 3 API tools</span></div>
+
+        <div class="lane l-sv">
+          <h3>3 · Sarvam voice agent <small>live call</small></h3>
+          <div class="phase">Before dialling</div>
+          <div class="box"><span class="mono">dial-check</span> removes do-not-call sellers (1,178 blocked)</div>
+          <div class="phase">Call start · <span class="tag t-pre">on_start</span></div>
+          <div class="box"><b>fetch_seller_persona</b> → 18 per-seller variables + unique <code>call_ref</code>. Greeting: <i>"Hello, kya aap {business} se bol rahe hain?"</i></div>
+          <div class="phase">During the call · <span class="tag t-run">run</span></div>
+          <div class="box"><b>Sarvam LLM + female voice</b>, 11 languages, auto language detection, Hinglish. Prompt = <code>agent_prompt.md</code> + variables. Signals:<br>
+            <span class="sig">frustration</span><span class="sig">confusion</span><span class="sig">rush</span><span class="sig">interest</span><span class="sig">language switch</span><br>
+            → change <b>delivery only</b>, never facts → <b>log_persona_switch</b></div>
+          <div class="phase">After the call · <span class="tag t-end">on_end</span></div>
+          <div class="box"><b>send_call_outcome</b>: outcome, meeting/callback time, objections, summary → joined by <code>call_ref</code></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RIGHT: persona, live call, results -->
+    <section class="right">
+      <div class="card">
+        <h2>Sample persona spec</h2>
+        <div class="who"><b>MS International</b> (6299) · New Delhi · trader, 5–25 Cr <span class="seg">Fatigued / sceptical</span></div>
+        <table>
+          <tr><th>Setting</th><th>Choice</th><th>Why: seller data → past-call evidence</th></tr>
+          <tr><td class="k">Voice</td><td>Female, brisk pace <span class="conf lo">low</span></td>
+              <td>Calls average 10 s <span class="ev">· under-20 s sellers: 0.5% meetings vs 11.5% (n=45,242)</span></td></tr>
+          <tr><td class="k">Language</td><td>Hindi → English, formal <i>aap</i> <span class="conf hi">high</span></td>
+              <td>Delhi, Ltd company <span class="ev">· Delhi calls ran in Hindi/Hinglish (n=40,301)</span></td></tr>
+          <tr><td class="k">Tone</td><td>Warm, low pressure <span class="conf lo">low</span></td>
+              <td>4 "not interested" calls in 3 days, each under 15 s</td></tr>
+          <tr><td class="k">Plan</td><td colspan="2">One meeting ask → callback fallback · <b>close at the first sign of irritation</b> · IM Star Pro, listed price only</td></tr>
+          <tr><td class="k">Live rule</td><td colspan="2">Every adapted turn ends with one clear question <span class="ev">(after rush 16.8% vs 11.9%, n=1,957; after confusion 30.4% vs 23.9%, n=1,043)</span></td></tr>
+        </table>
+      </div>
+
+      <div class="card call">
+        <h2>Live call with switches (seller 95487, time-pressed)</h2>
+        <div><span class="v">VANI:</span> हेलो, क्या आप Kencraft &amp; Allied Industries से बोल रहे हैं?</div>
+        <div><span class="u">Seller:</span> Busy hoon abhi, jaldi boliye. <span class="sw">RUSH</span> → one short question, two meeting times</div>
+        <div><span class="u">Seller:</span> Can we talk in English? What does it cost? <span class="sw">LANGUAGE + INTEREST</span> → English, "TrustSEAL Pro, sixty thousand rupees for one year"</div>
+        <div><span class="u">Seller (6299):</span> Roz roz call aata hai, time waste… <span class="sw">FRUSTRATION</span> → apologise, close politely</div>
+      </div>
+
+      <div class="card impact">
+        <h2>Business impact</h2>
+        <ul>
+          <li><b>More meetings:</b> each seller gets the opening, pace and objection handling that past calls show works for sellers like them.</li>
+          <li><b>Fewer burnt sellers:</b> fatigued sellers are closed at the first sign of irritation; do-not-call sellers are never dialled (1,178 blocked).</li>
+          <li><b>Trust and compliance:</b> the same listed prices, spoken in words, for every seller; no invented offers; truthful if asked about automation.</li>
+          <li><b>Measurable:</b> every switch and outcome is logged per <code>call_ref</code>, so the persona rules can be tuned on real results.</li>
+          <li><b>Proven:</b> all 5 required signals seen live · 5 clearly distinct sample personas · 106 automated tests · no LLM needed: rules explain every choice.</li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div><b>Stack:</b> Python 3.10 · FastAPI · Pydantic v2 · SQLAlchemy 2 + SQLite · pytest · cloudflared · Sarvam Agents (MCP-configured) · optional OpenAI / Anthropic</div>
+    <div><b>Personas:</b> Delhi (fatigued) · Guwahati (time-pressed, Bengali-ready) · Pune (established, Marathi-ready) · Amritsar (warm callback, Punjabi-ready) · Rajkot (value-seeking, Gujarati-ready)</div>
+  </footer>
+
+</div>
+</body>
+</html>

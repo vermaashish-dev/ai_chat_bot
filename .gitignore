@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+*.db-wal
+*.db-shm
+evidence_cache.json
+*.log
+logs/
+# Seller data contains real seller and company names (internal use only).
+data/*.csv
+data/conversations/
+outputs/
+dist/

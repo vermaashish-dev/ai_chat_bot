@@ -1,0 +1,456 @@
+{
+  "agent_id": "sulabh-im-80199a3e-82ea",
+  "prompt_file": "sarvam/agent_prompt.md",
+  "prompt_sha256": "6bbbd19d9190fda0d1d9e3cfd7beb4bec066c9f72e7ccf4fc378ca4ff4b5d053",
+  "prompt_chars": 7929,
+  "variables": {
+    "glid": {
+      "value": "",
+      "description": "Seller GLID (fk_glusr_usr_id) for this call, supplied by the campaign or test call.",
+      "needs_initial_value": true,
+      "name": "glid"
+    },
+    "seller_found": {
+      "value": "no",
+      "description": "yes when the seller was found in the persona database",
+      "needs_initial_value": false,
+      "name": "seller_found"
+    },
+    "call_allowed": {
+      "value": "unknown",
+      "description": "yes, no (seller asked not to be called) or unknown (seller record unavailable)",
+      "needs_initial_value": false,
+      "name": "call_allowed"
+    },
+    "business_name": {
+      "value": "",
+      "description": "Business name to confirm at the start of the call",
+      "needs_initial_value": false,
+      "name": "business_name"
+    },
+    "opening_greeting": {
+      "value": "Hello, this is VANI calling from IndiaMART about your business listing. Am I speaking with the business owner?",
+      "description": "Exact first line of the call: asks for the business by name, or a general greeting when no name is on record",
+      "needs_initial_value": false,
+      "name": "opening_greeting"
+    },
+    "seller_city": {
+      "value": "",
+      "description": "Seller city",
+      "needs_initial_value": false,
+      "name": "seller_city"
+    },
+    "seller_category": {
+      "value": "",
+      "description": "Seller's main product category",
+      "needs_initial_value": false,
+      "name": "seller_category"
+    },
+    "opening_language": {
+      "value": "Hindi",
+      "description": "Language the call opens in",
+      "needs_initial_value": false,
+      "name": "opening_language"
+    },
+    "switch_language": {
+      "value": "English",
+      "description": "Most likely language if the seller switches",
+      "needs_initial_value": false,
+      "name": "switch_language"
+    },
+    "language_style": {
+      "value": "medium Hinglish with common trade words; respectful, aap and ji",
+      "description": "Hinglish mix and formality",
+      "needs_initial_value": false,
+      "name": "language_style"
+    },
+    "delivery_style": {
+      "value": "calm, unhurried pace; warmth high, empathy high, assertiveness low",
+      "description": "Pace and tone for this seller",
+      "needs_initial_value": false,
+      "name": "delivery_style"
+    },
+    "call_objective": {
+      "value": "Seller record could not be checked. First get permission: only after a clear yes, ask about buyer enquiries and offer a 15 to 20 minute meeting with a sales executive. Any other answer: thank the user and close.",
+      "description": "Primary and fallback outcome",
+      "needs_initial_value": false,
+      "name": "call_objective"
+    },
+    "opening_plan": {
+      "value": "Confirm the business name, then ask one question only: is the user open to a two minute conversation about their IndiaMART listing. Stop and wait. Continue only on a clear yes; for maybe, later, not sure or no, thank the user and end the call. Share no seller details and suggest no package.",
+      "description": "How to open this call",
+      "needs_initial_value": false,
+      "name": "opening_plan"
+    },
+    "seller_facts": {
+      "value": "",
+      "description": "Verified facts the agent may use",
+      "needs_initial_value": false,
+      "name": "seller_facts"
+    },
+    "previous_commitment": {
+      "value": "",
+      "description": "Earlier callback or meeting to acknowledge",
+      "needs_initial_value": false,
+      "name": "previous_commitment"
+    },
+    "objection_guidance": {
+      "value": "Any reluctance: accept it at once, thank the user and close.",
+      "description": "Handling for this seller's known objections",
+      "needs_initial_value": false,
+      "name": "objection_guidance"
+    },
+    "frustration_threshold": {
+      "value": "first sign",
+      "description": "first sign or second sign",
+      "needs_initial_value": false,
+      "name": "frustration_threshold"
+    },
+    "call_ref": {
+      "value": "",
+      "description": "Unique id for this call; sent back with the switch log and the outcome",
+      "needs_initial_value": false,
+      "name": "call_ref"
+    },
+    "recommended_package": {
+      "value": "none: do not suggest a package on this call",
+      "description": "Package suggested for this seller's turnover, with its price in words",
+      "needs_initial_value": false,
+      "name": "recommended_package"
+    },
+    "package_pitch": {
+      "value": "none",
+      "description": "Benefits and reason the suggested package fits",
+      "needs_initial_value": false,
+      "name": "package_pitch"
+    },
+    "call_outcome": {
+      "value": "",
+      "type": "enum",
+      "one_of": [
+        "meeting_fixed",
+        "callback_requested",
+        "not_interested",
+        "already_in_touch",
+        "complaint",
+        "wrong_person",
+        "do_not_call",
+        "language_barrier",
+        "other"
+      ],
+      "description": "call outcome",
+      "needs_initial_value": false,
+      "update_post_interaction": true,
+      "post_interaction_prompt": "Classify the final outcome of the call from the transcript. meeting_fixed only when the seller clearly agreed to a meeting time. callback_requested when a specific callback day or time was agreed. already_in_touch only when the seller says they are already talking to an IndiaMART sales executive about packages or services. complaint when the call was mainly about an unresolved complaint, poor service, or the seller being on a call with customer care. not_interested only when the refusal was unambiguous. Otherwise choose the closest value or other.",
+      "name": "call_outcome"
+    },
+    "meeting_time": {
+      "value": "",
+      "type": "string",
+      "description": "meeting time",
+      "needs_initial_value": false,
+      "update_post_interaction": true,
+      "post_interaction_prompt": "The meeting date and time the seller agreed to, exactly as agreed, or empty.",
+      "name": "meeting_time"
+    },
+    "callback_time": {
+      "value": "",
+      "type": "string",
+      "description": "callback time",
+      "needs_initial_value": false,
+      "update_post_interaction": true,
+      "post_interaction_prompt": "The callback date and time the seller asked for, or empty.",
+      "name": "callback_time"
+    },
+    "objections_raised": {
+      "value": "",
+      "type": "string",
+      "description": "objections raised",
+      "needs_initial_value": false,
+      "update_post_interaction": true,
+      "post_interaction_prompt": "Short list of the objections the seller raised, separated by semicolons, or empty.",
+      "name": "objections_raised"
+    },
+    "persona_switches": {
+      "value": "",
+      "type": "string",
+      "description": "persona switches",
+      "needs_initial_value": false,
+      "update_post_interaction": true,
+      "post_interaction_prompt": "List every point where the agent changed its delivery because of the seller's behaviour (frustration, confusion, interest, language switch, rush, bot suspicion). For each: signal detected, the seller's words, change made, reason. Separate entries with semicolons. Empty if none.",
+      "name": "persona_switches"
+    },
+    "call_summary": {
+      "value": "",
+      "type": "string",
+      "description": "call summary",
+      "needs_initial_value": false,
+      "update_post_interaction": true,
+      "post_interaction_prompt": "A short 1-2 line description of what happened on the call.",
+      "name": "call_summary"
+    }
+  },
+  "tools": [
+    {
+      "name": "fetch_seller_persona",
+      "tool_type": "webhook_on_start",
+      "connector_config": {
+        "url": "${PUBLIC_BASE_URL}/api/v1/sarvam/pre-call",
+        "method": "POST",
+        "lifecycle": "on_start",
+        "timeout_seconds": 8,
+        "headers": [
+          {
+            "name": "Authorization",
+            "type": "static",
+            "value": "Bearer ${API_TOKEN}"
+          }
+        ],
+        "body": [
+          {
+            "name": "glid",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "glid"
+            }
+          }
+        ],
+        "save_to_variables": [
+          {
+            "response_path": "variables.seller_found",
+            "variable_name": "seller_found"
+          },
+          {
+            "response_path": "variables.call_allowed",
+            "variable_name": "call_allowed"
+          },
+          {
+            "response_path": "variables.business_name",
+            "variable_name": "business_name"
+          },
+          {
+            "response_path": "variables.opening_greeting",
+            "variable_name": "opening_greeting"
+          },
+          {
+            "response_path": "variables.seller_city",
+            "variable_name": "seller_city"
+          },
+          {
+            "response_path": "variables.seller_category",
+            "variable_name": "seller_category"
+          },
+          {
+            "response_path": "variables.opening_language",
+            "variable_name": "opening_language"
+          },
+          {
+            "response_path": "variables.switch_language",
+            "variable_name": "switch_language"
+          },
+          {
+            "response_path": "variables.language_style",
+            "variable_name": "language_style"
+          },
+          {
+            "response_path": "variables.delivery_style",
+            "variable_name": "delivery_style"
+          },
+          {
+            "response_path": "variables.call_objective",
+            "variable_name": "call_objective"
+          },
+          {
+            "response_path": "variables.opening_plan",
+            "variable_name": "opening_plan"
+          },
+          {
+            "response_path": "variables.seller_facts",
+            "variable_name": "seller_facts"
+          },
+          {
+            "response_path": "variables.previous_commitment",
+            "variable_name": "previous_commitment"
+          },
+          {
+            "response_path": "variables.objection_guidance",
+            "variable_name": "objection_guidance"
+          },
+          {
+            "response_path": "variables.frustration_threshold",
+            "variable_name": "frustration_threshold"
+          },
+          {
+            "response_path": "variables.call_ref",
+            "variable_name": "call_ref"
+          },
+          {
+            "response_path": "variables.recommended_package",
+            "variable_name": "recommended_package"
+          },
+          {
+            "response_path": "variables.package_pitch",
+            "variable_name": "package_pitch"
+          }
+        ]
+      }
+    },
+    {
+      "name": "log_persona_switch",
+      "tool_type": "webhook",
+      "connector_config": {
+        "url": "${PUBLIC_BASE_URL}/api/v1/sarvam/switch-log",
+        "method": "POST",
+        "lifecycle": "run",
+        "timeout_seconds": 5,
+        "headers": [
+          {
+            "name": "Authorization",
+            "type": "static",
+            "value": "Bearer ${API_TOKEN}"
+          }
+        ],
+        "body": [
+          {
+            "name": "glid",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "glid"
+            }
+          },
+          {
+            "name": "call_ref",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "call_ref"
+            }
+          },
+          {
+            "name": "signal",
+            "type": "llm_prompt",
+            "description": "The signal detected in the seller's last turn",
+            "isInputProperty": true,
+            "param_type": "One of a list",
+            "enum": [
+              "frustration",
+              "confusion",
+              "interest",
+              "language_switch",
+              "rush",
+              "bot_suspicion",
+              "opt_out",
+              "other"
+            ]
+          },
+          {
+            "name": "change_made",
+            "type": "llm_prompt",
+            "description": "The delivery change made, in English",
+            "isInputProperty": true,
+            "param_type": "Text"
+          },
+          {
+            "name": "reason",
+            "type": "llm_prompt",
+            "description": "Why the change was made, in English, tied to what the seller said",
+            "isInputProperty": true,
+            "param_type": "Text"
+          },
+          {
+            "name": "seller_quote",
+            "type": "llm_prompt",
+            "description": "The seller's words that showed the signal, as heard",
+            "isInputProperty": true,
+            "param_type": "Text",
+            "required": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "send_call_outcome",
+      "tool_type": "webhook_on_end",
+      "connector_config": {
+        "url": "${PUBLIC_BASE_URL}/api/v1/sarvam/post-call",
+        "method": "POST",
+        "lifecycle": "on_end",
+        "timeout_seconds": 8,
+        "headers": [
+          {
+            "name": "Authorization",
+            "type": "static",
+            "value": "Bearer ${API_TOKEN}"
+          }
+        ],
+        "body": [
+          {
+            "name": "glid",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "glid"
+            }
+          },
+          {
+            "name": "call_ref",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "call_ref"
+            }
+          },
+          {
+            "name": "call_outcome",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "call_outcome"
+            }
+          },
+          {
+            "name": "meeting_time",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "meeting_time"
+            }
+          },
+          {
+            "name": "callback_time",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "callback_time"
+            }
+          },
+          {
+            "name": "objections_raised",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "objections_raised"
+            }
+          },
+          {
+            "name": "persona_switches",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "persona_switches"
+            }
+          },
+          {
+            "name": "call_summary",
+            "type": "agent_variable",
+            "value": {
+              "variable_name": "call_summary"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "voicemail_message": "Hello, this is VANI from IndiaMART calling about your business listing and buyer enquiries. We will call you back at a better time. Thank you.",
+  "intro_message": "{{opening_greeting}}",
+  "evaluation_criteria": [
+    {
+      "name": "Meeting fixed",
+      "variable": "call_outcome",
+      "operator": "equals",
+      "value": "meeting_fixed"
+    }
+  ]
+}
